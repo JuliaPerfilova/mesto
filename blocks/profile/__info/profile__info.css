@@ -3,3 +3,16 @@
   align-items: baseline;
   gap: 18px;
 }
+
+@media screen and (max-width: 720px) {
+.profile__info {
+  justify-content: center;
+  width: 90%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .profile__info {
+    gap: 10px;
+    }
+  }

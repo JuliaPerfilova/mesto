@@ -1,3 +1,4 @@
 .popup__form {
-  width: 358px;
+  padding: 0 22px;
+  max-width: 358px;
 }

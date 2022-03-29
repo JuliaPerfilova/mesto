@@ -8,12 +8,11 @@
 @media screen and (max-width: 1024px) {
   .content {
     width: calc(100% * (918 / 1024));
-    padding: 0 19px;
     }
   }
   
   @media screen and (max-width: 320px) {
     .content {
-      width: calc(100% * (282 /320));
+      width: 282px;
     }
   }

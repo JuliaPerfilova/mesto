@@ -10,10 +10,21 @@
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
+  transition: opacity 0.5s ease;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1024px) {
-.profile__add-button {
-  width: calc(100% * (918 / 1024));
+  .profile__add-button {
+    width: calc(100% * (918 / 1024));
+    }
   }
-}
+  
+  @media screen and (max-width: 480px) {
+    .profile__add-button {
+      width: 100%;
+      }
+    }

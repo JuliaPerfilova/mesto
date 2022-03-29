@@ -9,4 +9,9 @@
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
+  transition: opacity 0.5s ease;
+}
+
+.profile__edit-button:hover {
+  opacity: 0.6;
 }

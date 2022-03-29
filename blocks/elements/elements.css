@@ -12,3 +12,9 @@
     width: calc(100% * (918 / 1024));
     }
   }
+
+  @media screen and (max-width: 480px) {
+    .elements {
+      width: 100%;
+      }
+    }

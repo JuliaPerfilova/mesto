@@ -3,8 +3,6 @@ const popup = document.querySelector('.popup');
 const editWindowClose = popup.querySelector('.popup__close-button');
 
 function togglePopup(event) {
- /* console.log("Target         : " + event.target.classList);
-    console.log("Current target : " + event.currentTarget.classList); */
   if (event.target === event.currentTarget) {
     popup.classList.toggle('popup_opened');
   }

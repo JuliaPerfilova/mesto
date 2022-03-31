@@ -20,11 +20,11 @@
 @media screen and (max-width: 1024px) {
   .profile__add-button {
     width: calc(100% * (918 / 1024));
-    }
   }
+}
   
-  @media screen and (max-width: 480px) {
-    .profile__add-button {
-      width: 100%;
-      }
-    }
+@media screen and (max-width: 480px) {
+  .profile__add-button {
+    width: 100%;
+  }
+}

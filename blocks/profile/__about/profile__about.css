@@ -1,9 +1,10 @@
 .profile__about {
+  margin: 0;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
-  padding-top: 16px;
+  padding-top: 14px;
   max-width: 450px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -27,6 +28,7 @@
 
 @media screen and (max-width: 420px) {
   .profile__about {
+    padding-top: 8px;
     font-size: 14px;
     line-height: 17px;
   }

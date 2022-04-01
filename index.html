@@ -19,113 +19,111 @@
       <main class="content">
         <section class="profile">
           <div class="profile__block">
-            <div class="profile__avatar">
-              <img src="./images/Avatar.jpg" class="profile__avatar-image" alt="Аватар профиля">
-            </div>
-            
+            <img src="./images/Avatar.jpg" class="profile__avatar-image" alt="Аватар профиля">
+                        
             <div class="profile__info">
               <div class="profile__name-block">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>   
                 <p class="profile__about">Исследователь океана</p>  
               </div>
-              <button type="button" class="profile__edit-button">
+              <button type="button" aria-label="edit-button" class="profile__edit-button">
               </button>
             </div>
           </div>
-          <button type="button" class="profile__add-button">
+          <button type="button" aria-label="add-button" class="profile__add-button">
           </button>
         </section>
         <section class="elements">
 
-          <div class="element">
+          <article class="element">
             <img
               class="element__image"
               src="./images/karachaevo.jpg"
               alt="Карачаевск"
             />
             <div class="element__description">
-              <p class="element__name">
+              <h2 class="element__name">
                 Карачаевск
-              </p>
-              <button class="element__like-button" type="button">
+              </h2>
+              <button class="element__like-button" aria-label="like-button" type="button">
               </button>
             </div>
-          </div>
+          </article>
 
-          <div class="element">
+          <article class="element">
             <img
               class="element__image"
               src="./images/Elbrus.jpg"
               alt="Гора Эльбрус"
             />
             <div class="element__description">
-              <p class="element__name">
+              <h2 class="element__name">
                 Гора Эльбрус
-              </p>
-              <button class="element__like-button" type="button">
+              </h2>
+              <button class="element__like-button" aria-label="like-button" type="button">
               </button>
             </div>
-          </div>
+          </article>
 
-          <div class="element">
+          <article class="element">
             <img
               class="element__image"
               src="./images/dombai.jpg"
               alt="Домбай"
             />
             <div class="element__description">
-              <p class="element__name">
+              <h2 class="element__name">
                 Домбай
-              </p>
-              <button class="element__like-button" type="button">
+              </h2>
+              <button class="element__like-button" aria-label="like-button" type="button">
               </button>
             </div>
-          </div>
+          </article>
 
-          <div class="element">
+          <article class="element">
             <img
               class="element__image"
               src="./images/Elbrus.jpg"
               alt="Гора Эльбрус"
             />
             <div class="element__description">
-              <p class="element__name">
+              <h2 class="element__name">
                 Гора Эльбрус
-              </p>
-              <button class="element__like-button" type="button">
+              </h2>
+              <button class="element__like-button" aria-label="like-button" type="button">
               </button>
             </div>
-          </div>
+          </article>
 
-          <div class="element">
+          <article class="element">
             <img
               class="element__image"
               src="./images/dombai.jpg"
               alt="Домбай"
             />
             <div class="element__description">
-              <p class="element__name">
+              <h2 class="element__name">
                 Домбай
-              </p>
-              <button class="element__like-button" type="button">
+              </h2>
+              <button class="element__like-button" aria-label="like-button" type="button">
               </button>
             </div>
-          </div>
+          </article>
 
-          <div class="element">
+          <article class="element">
             <img
               class="element__image"
               src="./images/karachaevo.jpg"
               alt="Карачаевск"
             />
             <div class="element__description">
-              <p class="element__name">
+              <h2 class="element__name">
                 Карачаевск
-              </p>
-              <button class="element__like-button" type="button">
+              </h2>
+              <button class="element__like-button" aria-label="like-button" type="button">
               </button>
             </div>
-          </div>
+          </article>
         </section>
       </main>
       <footer class="footer">
@@ -137,10 +135,10 @@
         <div class="popup__container">
           <button class="popup__close-button" type="button"></button>
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__form">
+          <form class="popup__form" name="popup__form">
             <fieldset class="popup__edit-person">
-              <input class="popup__input" type="text" name="name" id="name" placeholder="Имя" value="Жак-Ив Кусто">
-              <input class="popup__input" type="text" name="about-person" id="about-person" placeholder="Профессия" value="Исследователь океана">
+              <input class="popup__input" type="text" name="name" id="name" placeholder="Имя" required>
+              <input class="popup__input" type="text" name="about-person" id="about-person" placeholder="Профессия" required>
             </fieldset>
             <button class="popup__save-button" type="submit">Сохранить</button>
           </form>

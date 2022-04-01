@@ -1,5 +1,12 @@
 .popup__edit-person {
   padding: 0;
   border: none;
-  margin-top: 24px;
+  margin-top: 19px;
+}
+
+
+@media screen and (max-width: 360px) {
+  .popup__edit-person {
+    margin-top: 43px;
+  }
 }

@@ -1,0 +1,12 @@
+.popup__add-card {
+  padding: 0;
+  border: none;
+  margin-top: 19px;
+}
+
+
+@media screen and (max-width: 360px) {
+  .popup__add-card {
+    margin-top: 43px;
+  }
+}

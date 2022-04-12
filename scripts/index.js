@@ -30,11 +30,11 @@ const sectionElements = document.querySelector('.elements');
 const profile = document.querySelector('.profile');
 const profileName = profile.querySelector('.profile__name');
 const profileAbout = profile.querySelector('.profile__about');
-const editButton = profile.querySelector('.profile__edit-button');
-const addButton = profile.querySelector('.profile__add-button');
+const profileEditButton = profile.querySelector('.profile__edit-button');
+const cardAddButton = profile.querySelector('.profile__add-button');
 
 const profilePopup = document.querySelector('.popup_type_profile');
-const closeProfilePopupButton = profilePopup.querySelector('.popup__close-button');
+const profilePopupCloseButton = profilePopup.querySelector('.popup__close-button');
 const profilePopupForm = profilePopup.querySelector('.popup__form');
 const inputProfileName = profilePopup.querySelector('#name');
 const inputProfileAbout = profilePopup.querySelector('#about-person');
@@ -42,17 +42,18 @@ const inputProfileAbout = profilePopup.querySelector('#about-person');
 const cardPopup = document.querySelector('.popup_type_card');
 const inputPictureName = cardPopup.querySelector('#picture-name');
 const inputPictureLink = cardPopup.querySelector('#picture-link');
-const closeCardPopupButton = cardPopup.querySelector('.popup__close-button');
+const cardPopupCloseButton = cardPopup.querySelector('.popup__close-button');
 const cardPopupForm = cardPopup.querySelector('.popup__form');
 
 const imagePopup = document.querySelector('.popup_type_image');
-const closeImagePopupButton = imagePopup.querySelector('.popup__close-button');
+const imagePopupCloseButton = imagePopup.querySelector('.popup__close-button');
 const popupImage = imagePopup.querySelector('.popup__image');
 const popupImageName = imagePopup.querySelector('.popup__image-title');
 
+const cardTemplate = document.querySelector('.template-element');
+
 // Создание карточки из шаблона
 function createCard(name, link) {
-  const cardTemplate = document.querySelector('.template-element');
   const card = cardTemplate.content.cloneNode(true);
   const deleteButton = card.querySelector('.element__delete-button');
   const cardName = card.querySelector('.element__name');
@@ -60,8 +61,9 @@ function createCard(name, link) {
   const likeButton = card.querySelector('.element__like-button');
   cardName.textContent = name;
   cardImage.src = link;
+  cardImage.alt = name;
   deleteButton.addEventListener('click', handleRemoveCard);
-  cardImage.addEventListener('click', handleOpenImagePopup);
+  cardImage.addEventListener('click', () => handleCardClick(name, link));
   likeButton.addEventListener('click', handleLikeButtonClick);
   return card;
 }
@@ -82,11 +84,16 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+// Функция открытия окна
+function openPopup(popup) {
+  popup.classList.add('popup_opened');
+}
+
 // Хэндлер открытия окна popupProfile
 function handleOpenProfilePopup() {
-  profilePopup.classList.add('popup_opened');
   inputProfileName.value = profileName.textContent;
   inputProfileAbout.value = profileAbout.textContent;
+  openPopup(profilePopup);
 }
 
 // Функция сохранения данных профиля
@@ -99,7 +106,7 @@ function handleSaveProfile(event) {
 
 // Функция открытия окна cardPopup
 function handleOpenCardPopup() {
-  cardPopup.classList.add('popup_opened');
+  openPopup(cardPopup);
   inputPictureName.value = '';
   inputPictureLink.value = '';
 }
@@ -118,10 +125,11 @@ function handleSaveCard(event) {
 }
 
 // Функция открытия картинки из превью
-function handleOpenImagePopup(event) {
-  imagePopup.classList.add('popup_opened');
-  popupImageName.textContent = event.target.closest('.element').querySelector('.element__name').textContent;
-  popupImage.src = event.target.src;
+function handleCardClick(name, link) {
+  openPopup(imagePopup);
+  popupImageName.textContent = name;
+  popupImage.src = link;
+  popupImage.alt = name;
 }
 
 // Лайки
@@ -130,14 +138,13 @@ function handleLikeButtonClick(event) {
 }
 
 // Listeners
-editButton.addEventListener('click', handleOpenProfilePopup);
+profileEditButton.addEventListener('click', handleOpenProfilePopup);
 profilePopupForm.addEventListener('submit', handleSaveProfile);
-addButton.addEventListener('click', handleOpenCardPopup);
+cardAddButton.addEventListener('click', handleOpenCardPopup);
 cardPopupForm.addEventListener('submit', handleSaveCard);
 
-closeProfilePopupButton.addEventListener('click', handleClosePopup);
-closeCardPopupButton.addEventListener('click', handleClosePopup);
-closeImagePopupButton.addEventListener('click', handleClosePopup);
-
+profilePopupCloseButton.addEventListener('click', handleClosePopup);
+cardPopupCloseButton.addEventListener('click', handleClosePopup);
+imagePopupCloseButton.addEventListener('click', handleClosePopup);
 
 loadInitialCards();

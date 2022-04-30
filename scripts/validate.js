@@ -1,4 +1,4 @@
-
+// Показать ошибку если валидация не прошла
 const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
@@ -6,6 +6,7 @@ const showInputError = (formElement, inputElement, errorMessage, config) => {
   errorElement.classList.add(config.errorClass);
 };
 
+// Скрыть ошибку если валидация прошла успешно
 const hideInputError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.remove(config.inputErrorClass);
@@ -13,6 +14,7 @@ const hideInputError = (formElement, inputElement, config) => {
   errorElement.classList.remove(config.errorClass);
 };
 
+// Проверка валидности
 const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage, config);
@@ -21,6 +23,7 @@ const checkInputValidity = (formElement, inputElement, config) => {
   }
 };
 
+// Добавление слушателей на все инпуты формы
 const setEventListeners = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
   const buttonElement = formElement.querySelector(config.submitButtonSelector);
@@ -33,6 +36,7 @@ const setEventListeners = (formElement, config) => {
   });
 };
 
+// Переключение "активности" кнопки
 const toggleButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(config.inactiveButtonClass);
@@ -47,6 +51,7 @@ const hasInvalidInput = (inputList) => {
   });
 }; 
 
+// Настройка валидации всех инпутов всех форм
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {

@@ -78,22 +78,33 @@ const handleRemoveCard = (event) => {
 };
 
 // Функция закрытия окна
-const closePopup = (popup) => {
-  popup.classList.remove('popup_opened');
+const closePopup = () => {
+  currentPopup.classList.remove('popup_opened');
   document.removeEventListener('keydown', handleKeyPress);
+};
+
+const clearInputErrors = (popup) => {
+  const inputs = Array.from(popup.querySelectorAll('.popup__input'));
+  inputs.forEach((inputElement) => {
+    const errorElement = popup.querySelector(`#${inputElement.id}-error`)
+    errorElement.classList.remove('popup__error_visible');
+    errorElement.textContent = '';
+    inputElement.classList.remove('popup__input_type_error');
+  });
 };
 
 // Функция открытия окна
 const openPopup = (popup) => {
+  clearInputErrors(popup);
   currentPopup = popup;
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleKeyPress);
 };
 
-// Функция закрытия попапа нажатием на Esc
+// Функция закрытия окна нажатием на Esc
 const handleKeyPress = (event) => {
   if (event.key === "Escape")  {
-    closePopup(currentPopup);
+    closePopup();
   }
 };
 
@@ -109,26 +120,20 @@ const handleSaveProfile = (event) => {
   event.preventDefault();
   profileName.textContent = inputProfileName.value;
   profileAbout.textContent = inputProfileAbout.value;
-  closePopup(profilePopup);
+  closePopup();
 };
 
 // Функция открытия окна cardPopup
 const handleOpenCardPopup = () => {
-  openPopup(cardPopup);
   inputPictureName.value = '';
   inputPictureLink.value = '';
-};
-
-// Хэндлер закрытия окна
-const handleClosePopup = (event) => {
-  const popup = event.target.closest('.popup');
-  closePopup(popup);
+  openPopup(cardPopup);
 };
 
 // Закрытие окна нажатием на оверлей
 const handlePopupClick = (event) => {
-  if (event.target === event.currentTarget) {
-    event.target.classList.toggle('popup_opened'); 
+  if (event.target === event.currentTarget || event.target.classList.contains('popup__close-button')) {
+    closePopup();
   }
 };
 
@@ -137,20 +142,20 @@ const handleSaveCard = (event) => {
   event.preventDefault();
   const newCard = createCard(inputPictureName.value, inputPictureLink.value);
   sectionElements.prepend(newCard);
-  closePopup(cardPopup);
+  closePopup();
 };
 
 // Функция открытия картинки из превью
 const handleCardClick = (name, link) => {
-  openPopup(imagePopup);
   popupImageName.textContent = name;
   popupImage.src = link;
   popupImage.alt = name;
+  openPopup(imagePopup);
 };
 
 // Лайки
 const handleLikeButtonClick = (event) => {
-  event.target.classList.toggle('element__like-button_active'); 
+  event.target.classList.toggle('element__like-button_active');
 };
 
 // Listeners
@@ -158,8 +163,6 @@ profileEditButton.addEventListener('click', handleOpenProfilePopup);
 profilePopupForm.addEventListener('submit', handleSaveProfile);
 cardAddButton.addEventListener('click', handleOpenCardPopup);
 cardPopupForm.addEventListener('submit', handleSaveCard);
-
-Array.from(document.querySelectorAll('.popup__close-button')).forEach((element) => {element.addEventListener('click', handleClosePopup)});
 
 Array.from(document.querySelectorAll('.popup')).forEach((element) => {element.addEventListener('click', handlePopupClick)});
 

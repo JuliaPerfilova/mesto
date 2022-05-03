@@ -1,3 +1,15 @@
+import {enableValidation, toggleButtonState, hideInputError} from './validate.js';
+
+
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -83,19 +95,25 @@ const closePopup = () => {
   document.removeEventListener('keydown', handleKeyPress);
 };
 
-const clearInputErrors = (popup) => {
-  const inputs = Array.from(popup.querySelectorAll('.popup__input'));
-  inputs.forEach((inputElement) => {
-    const errorElement = popup.querySelector(`#${inputElement.id}-error`)
-    errorElement.classList.remove('popup__error_visible');
-    errorElement.textContent = '';
-    inputElement.classList.remove('popup__input_type_error');
+// Функция сброса ошибок инпутов
+const clearInputErrors = (inputList, popup) => {
+  const formElement = popup.querySelector(config.formSelector);
+  inputList.forEach((inputElement) => {
+    hideInputError(formElement, inputElement, config);
   });
+};
+
+// Функция открытия окна, содержащего инпуты
+const openPopupWithInputs = (popup) => {
+  const inputList = Array.from(popup.querySelectorAll(config.inputSelector));
+  const buttonElement = popup.querySelector(config.submitButtonSelector);
+  clearInputErrors(inputList, popup);
+  toggleButtonState(inputList, buttonElement, config);
+  openPopup(popup);
 };
 
 // Функция открытия окна
 const openPopup = (popup) => {
-  clearInputErrors(popup);
   currentPopup = popup;
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', handleKeyPress);
@@ -112,7 +130,7 @@ const handleKeyPress = (event) => {
 const handleOpenProfilePopup = ()  => {
   inputProfileName.value = profileName.textContent;
   inputProfileAbout.value = profileAbout.textContent;
-  openPopup(profilePopup);
+  openPopupWithInputs(profilePopup);
 };
 
 // Функция сохранения данных профиля
@@ -127,7 +145,7 @@ const handleSaveProfile = (event) => {
 const handleOpenCardPopup = () => {
   inputPictureName.value = '';
   inputPictureLink.value = '';
-  openPopup(cardPopup);
+  openPopupWithInputs(cardPopup);
 };
 
 // Закрытие окна нажатием на оверлей
@@ -168,3 +186,4 @@ Array.from(document.querySelectorAll('.popup')).forEach((element) => {element.ad
 
 
 loadInitialCards();
+enableValidation(config);

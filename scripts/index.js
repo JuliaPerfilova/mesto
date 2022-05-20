@@ -96,8 +96,7 @@ const handleSaveProfile = (event) => {
 
 // Функция открытия окна cardPopup
 const handleOpenCardPopup = () => {
-  inputPictureName.value = '';
-  inputPictureLink.value = '';
+  cardPopupForm.reset();
   openPopupWithInputs(cardPopup);
 };
 

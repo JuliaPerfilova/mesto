@@ -1,13 +1,12 @@
-import {openPopup} from "./popup.js";
-
 export default class Card {
-  constructor(data, cardSelector) {
+  constructor({ name, link }, cardSelector, handleCardClick) {
     this._cardSelector = cardSelector;
-    this._name = data.name;
-    this._link = data.link;
-    this._imagePopup = document.querySelector('.popup_type_image');
+    this._name = name;
+    this._link = link;
+    this._handleCardClick = handleCardClick;
+    /*this._imagePopup = document.querySelector('.popup_type_image');
     this._popupImageName = this._imagePopup.querySelector('.popup__image-title');
-    this._popupImage = this._imagePopup.querySelector('.popup__image');
+    this._popupImage = this._imagePopup.querySelector('.popup__image');*/
   }
 
   _getTemplate() {
@@ -23,12 +22,12 @@ export default class Card {
     event.target.closest('.element').remove();
   };
 
-  _handleCardClick() {
+  /*_handleCardClick() {
     openPopup(this._imagePopup);
     this._popupImageName.textContent = this._name;
     this._popupImage.src = this._link;
     this._popupImage.alt = this._name;
-  };
+  };*/
 
   _handleLikeButtonClick(event) {
     event.target.classList.toggle('element__like-button_active'); 

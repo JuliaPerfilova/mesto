@@ -1,4 +1,4 @@
-import Popup from "./popup.js";
+import Popup from "./Popup.js";
 import FormValidator from "./FormValidator.js";
 import {config} from "../utils/constants.js";
 

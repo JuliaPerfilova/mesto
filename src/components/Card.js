@@ -4,9 +4,6 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._handleCardClick = handleCardClick;
-    /*this._imagePopup = document.querySelector('.popup_type_image');
-    this._popupImageName = this._imagePopup.querySelector('.popup__image-title');
-    this._popupImage = this._imagePopup.querySelector('.popup__image');*/
   }
 
   _getTemplate() {
@@ -21,13 +18,6 @@ export default class Card {
   _handleRemoveCard(event) {
     event.target.closest('.element').remove();
   };
-
-  /*_handleCardClick() {
-    openPopup(this._imagePopup);
-    this._popupImageName.textContent = this._name;
-    this._popupImage.src = this._link;
-    this._popupImage.alt = this._name;
-  };*/
 
   _handleLikeButtonClick(event) {
     event.target.classList.toggle('element__like-button_active'); 

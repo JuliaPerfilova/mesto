@@ -1,5 +1,4 @@
 import Popup from "./Popup.js";
-import FormValidator from "./FormValidator.js";
 import {config} from "../utils/constants.js";
 
 export default class PopupWithForm extends Popup {
@@ -7,12 +6,10 @@ export default class PopupWithForm extends Popup {
     super(popupSelector);
     this._form = this._popup.querySelector(config.formSelector);
     this._submitForm = submitForm;
-    const formValidator = new FormValidator(config, this._form);
-    formValidator.enableValidation();
+    this._inputList = this._form.querySelectorAll(config.inputSelector);
   }
 
   _getInputValues() {
-    this._inputList = this._form.querySelectorAll(config.inputSelector);
     const formValues = {};
   
     this._inputList.forEach(input => {
@@ -33,7 +30,9 @@ export default class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
-    const formValidator = new FormValidator(config, this._form);
-    formValidator.resetForm();
+  }
+
+  getFormName() {
+    return this._form.getAttribute('name');
   }
 }

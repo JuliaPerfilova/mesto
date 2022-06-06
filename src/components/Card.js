@@ -25,6 +25,8 @@ export default class Card {
   
   _setEventListeners() {
     const deleteButton = this._element.querySelector('.element__delete-button');
+    // Используется ровно один раз, только в этом методе
+    // Нет смысла сохранять в this
     const likeButton = this._element.querySelector('.element__like-button');
     deleteButton.addEventListener('click', (event) => this._handleRemoveCard(event));
     this._cardImage.addEventListener('click', () => this._handleCardClick());

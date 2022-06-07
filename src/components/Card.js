@@ -4,6 +4,8 @@ export default class Card {
     this._name = name;
     this._link = link;
     this._handleCardClick = handleCardClick;
+    this._deleteButton = this._element.querySelector('.element__delete-button');
+    this._likeButton = this._element.querySelector('.element__like-button');
   }
 
   _getTemplate() {
@@ -24,13 +26,9 @@ export default class Card {
   };
   
   _setEventListeners() {
-    const deleteButton = this._element.querySelector('.element__delete-button');
-    // Используется ровно один раз, только в этом методе
-    // Нет смысла сохранять в this
-    const likeButton = this._element.querySelector('.element__like-button');
-    deleteButton.addEventListener('click', (event) => this._handleRemoveCard(event));
+    this._deleteButton.addEventListener('click', (event) => this._handleRemoveCard(event));
     this._cardImage.addEventListener('click', () => this._handleCardClick());
-    likeButton.addEventListener('click', (event) => this._handleLikeButtonClick(event));
+    this._likeButton.addEventListener('click', (event) => this._handleLikeButtonClick(event));
   }
 
   generateCard() {

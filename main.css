@@ -712,6 +712,19 @@ template {
 .element__like-button_active {
   background-image: url(35948469632d0421d697.svg);
 }
+.element__like-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+.element__like-counter {
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 13px;
+  color: black;
+}
 .footer {
   display: flex;
   justify-content: space-between;

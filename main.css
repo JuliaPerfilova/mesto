@@ -724,6 +724,7 @@ template {
   font-weight: 400;
   font-size: 13px;
   color: black;
+  margin-top: 3px;
 }
 .footer {
   display: flex;

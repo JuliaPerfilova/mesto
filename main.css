@@ -499,6 +499,10 @@ template {
   .profile__avatar-overlay:hover::before {
     opacity: 1;
   }
+.profile__edit-avatar {
+  
+  background-image: url(a086f758840ae814ecde.svg);
+}
 .profile__info {
   display: flex;
   align-items: baseline;

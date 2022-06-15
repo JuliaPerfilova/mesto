@@ -493,6 +493,7 @@ template {
   opacity: 0;
   transition: 0.5s;
   cursor: pointer;
+  content: '';
   }
   
   .profile__avatar-overlay:hover::before {

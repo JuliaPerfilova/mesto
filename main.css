@@ -499,24 +499,8 @@ template {
   .profile__avatar-overlay:hover::before {
     opacity: 1;
   }
-.profile__edit-avatar::before {
-  background-color: rgba(0, 0, 0, 0.8);
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: 0.5s;
-  cursor: pointer;
-  content: '';
-  background-image: url(a086f758840ae814ecde.svg);
-}
-
-.profile__edit-avatar:hover::before {
-  opacity: 1;
+.profile__edit-avatar {
+  
 }
 .profile__info {
   display: flex;

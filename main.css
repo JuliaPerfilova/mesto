@@ -484,6 +484,8 @@ template {
   background-color: rgba(0, 0, 0, 0.8);
   background-image: url(a086f758840ae814ecde.svg);
   position: absolute;
+  width: 120px;
+  height: 120px;
   top: 0;
   right: 0;
   bottom: 0;

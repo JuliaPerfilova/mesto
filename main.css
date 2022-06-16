@@ -481,7 +481,7 @@ template {
   border-radius: 50%;
   object-fit: cover;
 }
-.profile__avatar-overlay::before {
+.profile__avatar-overlay {
   background-color: rgba(0, 0, 0, 0.8);
   background-image: url(a086f758840ae814ecde.svg);
   position: absolute;
@@ -497,7 +497,7 @@ template {
   content: '';
   }
   
-  .profile__avatar-overlay:hover::before {
+  .profile__avatar-overlay:hover {
     opacity: 1;
   }
 .profile__edit-avatar {

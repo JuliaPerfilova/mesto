@@ -869,6 +869,17 @@ template {
     }
   }
 
+.popup__edit-avatar {
+  padding: 0;
+  border: none;
+  margin-top: 19px;
+}
+
+@media screen and (max-width: 360px) {
+  .popup__edit-avatar {
+    margin-top: 43px;
+  }
+}
 .popup__form {
   padding: 0 22px;
   max-width: 358px;

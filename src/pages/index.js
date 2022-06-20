@@ -145,11 +145,17 @@ const createCard = (data, cardSelector) => {
         .then(result => {
           showActualState(result);
         })
+        .catch((err) => {
+          console.log(err);
+        });
       } else {
         api.likeCard(card.getId())
         .then(result => {
           showActualState(result);
         })
+        .catch((err) => {
+          console.log(err);
+        });
       }
     },
     // при нажатии на корзину

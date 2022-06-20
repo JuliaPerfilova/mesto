@@ -6,11 +6,16 @@ export default class ConfirmationPopup  extends Popup {
     this._confirmButton = document.querySelector('.popup__confirm-button');
   }
 
-  open(action) {
+  setEventListeners() {
     this._confirmButton.addEventListener('click', () => {
-      action();
+      this._action();
       super.close();
     });
+    super.setEventListeners();
+  }
+
+  open(action) {
+    this._action = action;
     super.open();
   }
 }

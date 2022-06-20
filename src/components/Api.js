@@ -31,7 +31,7 @@ export default class Api {
   }
 
   likeCard(id) {
-    _makeRequest({
+    return this._makeRequest({
       url: `${this._url}/cards/${id}/likes`, 
       method: 'PUT'
     })
@@ -39,7 +39,7 @@ export default class Api {
   }
 
   dislikeCard(id) {
-    _makeRequest({
+    return this._makeRequest({
       url: `${this._url}/cards/${id}/likes`, 
       method: 'DELETE'
     })
@@ -47,21 +47,21 @@ export default class Api {
   }
 
   getInitialCards() {
-    _makeRequest({
+    return this._makeRequest({
       url: `${this._url}/cards`
     })
     .then(res => res.json());
   }
 
   getMyProfile() {
-    _makeRequest({
+    return this._makeRequest({
       url: `${this._url}/users/me`
     })
     .then(res => res.json());
   }
 
   updateProfile(userInfo) {
-    _makeRequest({
+    return this._makeRequest({
       url: `${this._url}/users/me`,
       method: 'PATCH',
       contentType: 'application/json',
@@ -72,7 +72,7 @@ export default class Api {
 
   
   updateAvatar(avatarLink) {
-    _makeRequest({
+    return this._makeRequest({
       url: `${this._url}/users/me/avatar`,
       method: 'PATCH',
       contentType: 'application/json',
@@ -82,7 +82,7 @@ export default class Api {
   }
 
   createCard(data)  {
-    _makeRequest({
+    return this._makeRequest({
       url: `${this._url}/cards`,
       method: 'POST',
       contentType: 'application/json',
@@ -92,7 +92,7 @@ export default class Api {
   }
 
   removeCard(id) {
-    _makeRequest({
+    return this._makeRequest({
       url: `${this._url}/cards/${id}`, 
       method: 'DELETE'
     });

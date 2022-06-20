@@ -1,0 +1,19 @@
+.popup__edit-avatar {
+  padding: 0;
+  border: none;
+  margin-top: 19px;
+  width: 358px;
+}
+
+@media screen and (max-width: 600px) {
+  .popup__edit-avatar {
+    max-width: 320px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .popup__edit-avatar {
+    margin-top: 43px;
+    max-width: 250px;
+  }
+}

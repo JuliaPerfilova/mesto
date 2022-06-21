@@ -9,7 +9,6 @@ export default class ConfirmationPopup  extends Popup {
   setEventListeners() {
     this._confirmButton.addEventListener('click', () => {
       this._action();
-      super.close();
     });
     super.setEventListeners();
   }

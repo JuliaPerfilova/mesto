@@ -30,65 +30,63 @@ export default class Api {
     });
   }
 
+  _makeRequestAndGetJson(data) {
+    return this._makeRequest(data)
+      .then(res => res.json());
+  }
+
   likeCard(id) {
-    return this._makeRequest({
+    return this._makeRequestAndGetJson({
       url: `${this._url}/cards/${id}/likes`, 
       method: 'PUT'
-    })
-    .then(res => res.json());
+    });
   }
 
   dislikeCard(id) {
-    return this._makeRequest({
+    return this._makeRequestAndGetJson({
       url: `${this._url}/cards/${id}/likes`, 
       method: 'DELETE'
-    })
-    .then(res => res.json());
+    });
   }
 
   getInitialCards() {
-    return this._makeRequest({
+    return this._makeRequestAndGetJson({
       url: `${this._url}/cards`
-    })
-    .then(res => res.json());
+    });
   }
 
   getMyProfile() {
-    return this._makeRequest({
+    return this._makeRequestAndGetJson({
       url: `${this._url}/users/me`
-    })
-    .then(res => res.json());
+    });
   }
 
   updateProfile(userInfo) {
-    return this._makeRequest({
+    return this._makeRequestAndGetJson({
       url: `${this._url}/users/me`,
       method: 'PATCH',
       contentType: 'application/json',
       body: JSON.stringify(userInfo)
-    })
-    .then(res => res.json());
+    });
   }
 
   
   updateAvatar(avatarLink) {
-    return this._makeRequest({
+    return this._makeRequestAndGetJson({
       url: `${this._url}/users/me/avatar`,
       method: 'PATCH',
       contentType: 'application/json',
       body: JSON.stringify({ avatar: avatarLink })
-    })
-    .then(res => res.json());
+    });
   }
 
   createCard(data)  {
-    return this._makeRequest({
+    return this._makeRequestAndGetJson({
       url: `${this._url}/cards`,
       method: 'POST',
       contentType: 'application/json',
       body: JSON.stringify(data)
-    })
-    .then(res => res.json());
+    });
   }
 
   removeCard(id) {
